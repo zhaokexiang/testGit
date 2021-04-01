@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>hangge.com</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{height:170px;margin:400px;solid #000;}
+        input{width: 185px;height: 50px;font-size: 20px;text-align: right;outline: none;border: none;padding-right: 5px;}
+    </style>
+<meta charset="utf-8" />
+<script type="text/javascript" src="./jquery-3.5.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+		var quarterMoney = 0;
+		var yearMoney = 0;
+		var awardMoney = 0;
+		var sum = 0;
+		$('#quarter').on('input propertychange', function() {
+			var quarterNum = $(this).val();
+			quarterMoney = quarterNum * 2;
+			$("#quarterMoney").val(quarterMoney);
+			sum = quarterMoney + awardMoney + yearMoney;
+			$("#sum").val(sum);
+		});
+
+		$('#year').on('input propertychange', function() {
+			var yearNum = $(this).val();
+			yearMoney = yearNum * 10;
+			$("#yearMoney").val(yearMoney);
+			awardMoney = parseInt(yearNum / 3) * 10
+			$("#awardMoney").val(awardMoney);
+			sum = quarterMoney + awardMoney + yearMoney;
+			$("#sum").val(sum);
+		});
+
+	});
+</script>
+</head>
+<body>
+	<div class="box">
+		<table border="1" style="align: center;">
+			<tr>
+				<th>季卡</th>
+				<th>季卡金额</th>
+				<th>年卡</th>
+				<th>年卡金额</th>
+				<th>额外奖励</th>
+				<th>合计奖励</th>
+			</tr>
+			<tr>
+				<td><input type="text" id="quarter" /></td>
+				<td><input disabled="disabled" id="quarterMoney" value="" /></td>
+				<td><input type="text" id="year" /></td>
+				<td><input disabled="disabled" id="yearMoney" /></td>
+				<td><input disabled="disabled" id="awardMoney" /></td>
+				<td><input disabled="disabled" id="sum" /></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
